@@ -21,7 +21,7 @@ class Emitter {
 
     /**
      * @param {string} event
-     * @param {...string} args
+     * @param {...any} args
      * @return {undefined} 
      * @memberof Emitter
      */
