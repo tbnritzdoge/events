@@ -2,8 +2,8 @@
 Under extremely heavy load with 100 constant listeners @tbnritzdoge/events outperforms any other emitter
 
 ```
-drip x 519,385 ops/sec ±0.92% (94 runs sampled)
-native x 450,977 ops/sec ±1.62% (85 runs sampled)
-eventemitter3 x 427,221 ops/sec ±5.45% (90 runs sampled)
-@tbnritzdoge/events x 1,248,102 ops/sec ±0.25% (95 runs sampled)
+drip x 513,731 ops/sec ±0.60% (95 runs sampled)
+native x 491,991 ops/sec ±0.95% (96 runs sampled)
+eventemitter3 x 460,119 ops/sec ±0.17% (96 runs sampled)
+@tbnritzdoge/events x 1,270,677 ops/sec ±0.23% (95 runs sampled)
 ```
