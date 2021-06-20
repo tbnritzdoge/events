@@ -61,14 +61,13 @@ class Emitter {
      * @param {fn} the function which you provided in <Emitter>.on or <Emitter>.once
      * @memberof Emitter
      */
-    splice(event, fn) {
+    removeListener(event, fn) {
         const fns = this.#events[event];
         if (fns.length === 1) this.off(event);
         else fns.splice(indexOf(fns, fn), 1);
     }
 
     addListener(n, t) { return this.on(n, t) }
-    removeListener(n, t) { return this.splice(n, t) }
     setMaxListeners(..._) { }
     getMaxListeners() { return Infinity }
 }

@@ -6,10 +6,9 @@ declare class Emitter<T extends Record<PropertyKey, any[]> = {}> {
   off<K extends keyof T>(event: K): this;
 
   emit<K extends keyof T>(event: K, ...args: T[K]): boolean;
-  splice<K extends keyof T>(event: K, fn: EventFunction<T[K]>): undefined;
+  removeListener<K extends keyof T>(event: K, fn: EventFunction<T[K]>): undefined;
 
   addListener<K extends keyof T>(event: K, listener: EventFunction<T[K]>): this;
-  removeListener<K extends keyof T>(event: K, listener: EventFunction<T[K]>): this;
 
   setMaxListeners(n: number): this;
   getMaxListeners(): number;
