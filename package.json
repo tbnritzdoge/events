@@ -16,11 +16,12 @@
     "build": "run-s build:*",
     "build:code": "tateru",
     "build:exports": "gen-esm-wrapper dist/index.js dist/index.mjs",
-    "build:types": "shx cp src/index.d.ts dist/index.d.ts"
+    "build:types": "shx cp src/index.d.ts dist/index.d.ts",
+    "semantic-release": "semantic-release"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/tbnritzdoge/events.git"
+    "url": "https://github.com/tbnritzdoge/events.git"
   },
   "author": "doge (doge@helper.wtf)",
   "license": "ISC",
@@ -32,6 +33,7 @@
     "gen-esm-wrapper": "^1.1.2",
     "npm-run-all": "^4.1.5",
     "shx": "^0.3.3",
-    "tateru": "^0.0.9"
+    "tateru": "^0.0.9",
+    "semantic-release": "^17.4.4"
   }
 }
