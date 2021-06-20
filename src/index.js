@@ -27,7 +27,7 @@ class Emitter {
      */
     emit(event, ...args) {
         const e = this.#events[event];
-        if (!e) return;
+        if (Array.isArray(e) === false) return;
         var i = e.length;
         while (i--) e[i](...args);
     }
