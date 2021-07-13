@@ -2,29 +2,14 @@ function indexOf(arr, element, fromIndex = 0) {
     for (var i = fromIndex, L = arr.length; i !== L; ++i) if (arr[i] === element) return i;
     return -1;
 }
-/**
- * @class Emitter
- */
 class Emitter {
     #events = {};
     
-    /**
-     * @param {string} event
-     * @param {any} fn
-     * @return {any} 
-     * @memberof Emitter
-     */
     on(event, fn) {
         const e = this.#events[event];
         return e ? e[e.length] = fn : this.#events[event] = [fn];
     }
 
-    /**
-     * @param {string} event
-     * @param {...any} args
-     * @return {undefined} 
-     * @memberof Emitter
-     */
     emit(event, ...args) {
         const e = this.#events[event];
         if (Array.isArray(e) === false) return;
@@ -32,12 +17,6 @@ class Emitter {
         while (i--) e[i](...args);
     }
 
-    /**
-     * @param {string} event
-     * @param {any} fn
-     * @return {any} 
-     * @memberof Emitter
-     */
     once(event, fn) {
         const f = (...args) => {
             this.splice(event, fn);
@@ -47,20 +26,10 @@ class Emitter {
         return this.on(event, f);
     }
 
-    /**
-     * @param {string} event
-     * @return {any}
-     * @memberof Emitter
-     */
     off(event) {
         return this.#events[event] = void 0;
     }
 
-    /**
-     * @param {string} event
-     * @param {fn} the function which you provided in <Emitter>.on or <Emitter>.once
-     * @memberof Emitter
-     */
     removeListener(event, fn) {
         const fns = this.#events[event];
         if (fns.length === 1) this.off(event);
