@@ -3,7 +3,7 @@ declare class Emitter<T extends Record<PropertyKey, any[]> = {}> {
 
   on<K extends keyof T>(event: K, listener: EventFunction<T[K]>): this;
   once<K extends keyof T>(event: K, listener: EventFunction<T[K]>): this;
-  off<K extends keyof T>(event: K): this;
+  off<K extends keyof T>(event: K, fn: EventFunction<T[K]>): undefined;
 
   emit<K extends keyof T>(event: K, ...args: T[K]): boolean;
   removeListener<K extends keyof T>(event: K, fn: EventFunction<T[K]>): undefined;
