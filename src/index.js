@@ -4,7 +4,7 @@ function indexOf(arr, element, fromIndex = 0) {
 }
 class Emitter {
     #events = {};
-    
+
     on(event, fn) {
         const e = this.#events[event];
         return e ? e[e.length] = fn : this.#events[event] = [fn];
@@ -26,17 +26,14 @@ class Emitter {
         return this.on(event, f);
     }
 
-    off(event) {
-        return this.#events[event] = void 0;
-    }
-
-    removeListener(event, fn) {
+    off(event, fn) {
         const fns = this.#events[event];
-        if (fns.length === 1) this.off(event);
+        if (fns.length === 1) this.#events[event] = void 0;
         else fns.splice(indexOf(fns, fn), 1);
     }
 
-    addListener(n, t) { return this.on(n, t) }
+    removeListener(e, f) { return this.off(e, f); }
+    addListener(n, t) { return this.on(n, t); }
     setMaxListeners(..._) { }
     getMaxListeners() { return Infinity }
 }
