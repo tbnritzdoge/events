@@ -1,19 +1,19 @@
 declare class Emitter<T extends Record<PropertyKey, any[]> = {}> {
-  #events: T
+  #events: T;
 
-  on<K extends keyof T>(event: K, listener: EventFunction<T[K]>): this;
-  once<K extends keyof T>(event: K, listener: EventFunction<T[K]>): this;
-  off<K extends keyof T>(event: K, fn: EventFunction<T[K]>): undefined;
+  on<K extends PropertyKey>(event: K, listener: EventFunction): this;
+  once<K extends PropertyKey>(event: K, listener: EventFunction): this;
+  off<K extends PropertyKey>(event: K, fn: EventFunction): undefined;
 
-  emit<K extends keyof T>(event: K, ...args: T[K]): boolean;
-  removeListener<K extends keyof T>(event: K, fn: EventFunction<T[K]>): undefined;
+  emit<K extends PropertyKey>(event: K, ...args: T[K]): boolean;
+  removeListener<K extends PropertyKey>(event: K, fn: EventFunction): undefined;
 
-  addListener<K extends keyof T>(event: K, listener: EventFunction<T[K]>): this;
+  addListener<K extends PropertyKey>(event: K, listener: EventFunction): this;
 
   setMaxListeners(n: number): this;
   getMaxListeners(): number;
 }
 
-declare type EventFunction<A extends any[] = any[]> = (...args: A) => unknown;
+declare type EventFunction = (...args: any[]) => unknown;
 
 export = Emitter;
