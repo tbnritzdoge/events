@@ -33,6 +33,12 @@ class Emitter {
         else fns.splice(indexOf(fns, fn), 1);
     }
 
+    listenerCount(event) {
+        const fns = this.#events[event];
+        if (fns === undefined) return 0;
+        return fns.length;
+    }
+
     removeListener(e, f) { return this.off(e, f); }
     addListener(n, t) { return this.on(n, t); }
     setMaxListeners(..._) { }
