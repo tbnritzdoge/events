@@ -19,7 +19,7 @@ class Emitter {
 
     once(event, fn) {
         const f = (...args) => {
-            this.splice(event, fn);
+            this.off(event, fn);
             fn(...args);
         }
 
