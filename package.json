@@ -1,6 +1,6 @@
 {
   "name": "@tbnritzdoge/events",
-  "version": "0.1.6",
+  "version": "0.1.7",
   "description": "very fast events",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",

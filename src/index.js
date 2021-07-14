@@ -28,6 +28,7 @@ class Emitter {
 
     off(event, fn) {
         const fns = this.#events[event];
+        if (fns === undefined) return;
         if (fns.length === 1) this.#events[event] = void 0;
         else fns.splice(indexOf(fns, fn), 1);
     }
