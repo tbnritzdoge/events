@@ -7,14 +7,16 @@ class Emitter {
 
     on(event, fn) {
         const e = this.#events[event];
-        return e ? e[e.length] = fn : this.#events[event] = [fn];
+        e ? e[e.length] = fn : this.#events[event] = [fn];
+        return this;
     }
 
     emit(event, ...args) {
         const e = this.#events[event];
-        if (Array.isArray(e) === false) return;
+        if (Array.isArray(e) === false) return false;
         var i = e.length;
         while (i--) e[i](...args);
+        return true;
     }
 
     once(event, fn) {
@@ -28,9 +30,10 @@ class Emitter {
 
     off(event, fn) {
         const fns = this.#events[event];
-        if (fns === undefined) return;
+        if (fns === undefined) return this;
         if (fns.length === 1) this.#events[event] = void 0;
         else fns.splice(indexOf(fns, fn), 1);
+        return this;
     }
 
     listenerCount(event) {
@@ -41,7 +44,7 @@ class Emitter {
 
     removeListener(e, f) { return this.off(e, f); }
     addListener(n, t) { return this.on(n, t); }
-    setMaxListeners(..._) { }
+    setMaxListeners(..._) { return this; }
     getMaxListeners() { return Infinity }
 }
 
