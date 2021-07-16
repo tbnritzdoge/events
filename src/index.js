@@ -3,12 +3,11 @@ function indexOf(arr, element, fromIndex = 0) {
     return -1;
 }
 class Emitter {
-    #events = {};
+    #events = Object.create(null);
 
     on(event, fn) {
-        const e = this.#events[event];
-        e ? e[e.length] = fn : this.#events[event] = [fn];
-        return this;
+        const e = this.#events[event] ??= [];
+        return e[e.length] = fn, this;
     }
 
     emit(event, ...args) {
