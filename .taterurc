@@ -1,8 +1,0 @@
-minify = true
-cjs = true
-
-tsconfig = ''
-
-[main]
-modules = 'src/**/*.js'
-out_dir = 'dist'

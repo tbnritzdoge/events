@@ -16,7 +16,7 @@ declare class Emitter<T extends Record<PropertyKey, any[]> = Record<PropertyKey,
   listeners<K extends keyof T>(event: K): EventFunction<T[K]>[];
   prependListener<K extends keyof T>(event: K, listener: EventFunction<T[K]>): this;
   prependOnceListener<K extends keyof T>(event: K, listener: EventFunction<T[K]>): this;
-  
+
 }
 
 declare type EventFunction<T extends any[] = any[]> = (...args: T) => unknown;
