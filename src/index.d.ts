@@ -1,20 +1,24 @@
-declare class Emitter<T extends Record<PropertyKey, any[]> = {}> {
+declare class Emitter<T extends Record<PropertyKey, any[]> = Record<PropertyKey, any[]>> {
   #events: T;
 
-  on<K extends PropertyKey>(event: K, listener: EventFunction): this;
-  once<K extends PropertyKey>(event: K, listener: EventFunction): this;
-  off<K extends PropertyKey>(event: K, fn: EventFunction): this;
-  listenerCount<K extends PropertyKey>(event: K): number;
-
-  emit<K extends PropertyKey>(event: K, ...args: T[K]): boolean;
-  removeListener<K extends PropertyKey>(event: K, fn: EventFunction): this;
-
-  addListener<K extends PropertyKey>(event: K, listener: EventFunction): this;
-
+  on<K extends keyof T>(event: K, listener: EventFunction<T[K]>): this;
+  once<K extends keyof T>(event: K, listener: EventFunction<T[K]>): this;
+  off<K extends keyof T>(event: K, fn: EventFunction<T[K]>): this;
+  listenerCount<K extends keyof T>(event: K): number;
+  emit<K extends keyof T>(event: K, ...args: T[K]): boolean;
+  removeListener<K extends keyof T>(event: K, fn: EventFunction<T[K]>): this;
+  addListener<K extends keyof T>(event: K, listener: EventFunction<T[K]>): this;
   setMaxListeners(n: number): this;
+  removeAllListeners<K extends keyof T>(event?: K): this;
   getMaxListeners(): number;
+  eventNames(): string[];
+  rawListeners<K extends keyof T>(event: K): EventFunction<T[K]>[];
+  listeners<K extends keyof T>(event: K): EventFunction<T[K]>[];
+  prependListener<K extends keyof T>(event: K, listener: EventFunction<T[K]>): this;
+  prependOnceListener<K extends keyof T>(event: K, listener: EventFunction<T[K]>): this;
+  
 }
 
-declare type EventFunction = (...args: any[]) => unknown;
+declare type EventFunction<T extends any[] = any[]> = (...args: T) => unknown;
 
 export = Emitter;
