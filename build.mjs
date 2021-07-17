@@ -1,3 +1,4 @@
+console.time('build');
 import { minify } from 'terser';
 import { mkdir, readFile, writeFile } from 'fs/promises';
 
@@ -9,7 +10,7 @@ function replacer(code, runtime) {
 
 setup: {
     try { await mkdir('./dist'); } catch { };
-}
+};
 
 minify: {
     const raw = replacer((await readFile('./src/index.js')).toString(), 'build');
@@ -19,5 +20,6 @@ minify: {
     });
     await writeFile('./dist/index.js', code);
 
-}
+};
 
+console.timeEnd('build');
