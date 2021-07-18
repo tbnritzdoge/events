@@ -1,7 +1,6 @@
 import { test } from 'uvu';
 import * as assert from 'uvu/assert';
-import Emitter from './dist/index.mjs';
-
+import Emitter from './src/index.js';
 const noop = () => null;
 
 test('initialization', () => {

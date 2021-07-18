@@ -1,7 +1,9 @@
+/* c8 ignore start */
 function indexOf(arr, element, fromIndex = 0) {
     for (var i = fromIndex, L = arr.length; i !== L; ++i) if (arr[i] === element) return i;
     return -1;
 }
+/* c8 ignore stop */
 class Emitter {
     #events = Object.create(null);
 
