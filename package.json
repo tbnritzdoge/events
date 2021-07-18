@@ -1,6 +1,6 @@
 {
   "name": "@tbnritzdoge/events",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "very fast events",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
@@ -40,5 +40,8 @@
     "shx": "^0.3.3",
     "terser": "^5.7.1",
     "uvu": "^0.5.1"
+  },
+  "engines": {
+    "node": ">=15.0.0"
   }
 }
