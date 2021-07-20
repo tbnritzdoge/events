@@ -1,3 +1,30 @@
+# usage
+
+### nodejs
+```js
+import EventEmitter from '@tbnritzdoge/events';
+const emitter = new EventEmitter();
+emitter.on('cheese', (gluten) => {
+    if (Array.isArray(gluten) === true) {
+        gluten[gluten.length] = gluten[0];
+    }
+});
+emitter.emit('cheese', ['a', 'b', 'c']);
+```
+
+### deno
+
+```ts
+import EventEmitter from 'https://unpkg.com/@tbnritzdoge/events@1.0.1/dist/index.js';
+const emitter = new EventEmitter();
+emitter.on('cheese', (gluten) => {
+    if (Array.isArray(gluten) === true) {
+        gluten[gluten.length] = gluten[0];
+    }
+});
+emitter.emit('cheese', ['a', 'b', 'c']);
+```
+
 # benchmarks
 
 ```
