@@ -5,7 +5,8 @@ function indexOf(arr, element, fromIndex = 0) {
 }
 /* c8 ignore stop */
 class Emitter {
-    #events = Object.create(null);
+    #events = {};
+    constructor() { Object.setPrototypeOf(this.#events, null); };
 
     on(event, fn) {
         const e = this.#events[event] ??= [];
