@@ -1,6 +1,6 @@
 {
   "name": "@tbnritzdoge/events",
-  "version": "1.0.2",
+  "version": "1.0.4",
   "description": "very fast events",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
@@ -15,10 +15,7 @@
   "scripts": {
     "prepare": "husky install",
     "prepack": "npm run build",
-    "build": "run-s build:*",
-    "build:code": "node build.mjs",
-    "build:types": "shx cp src/index.d.ts dist/index.d.ts",
-    "postbuild": "gen-esm-wrapper dist/index.js dist/index.mjs",
+    "build": "node build.mjs",
     "test": "node test.mjs",
     "test:coverage": "c8 --include src/index.js npm test"
   },
@@ -34,11 +31,8 @@
   "homepage": "https://github.com/tbnritzdoge/events#readme",
   "devDependencies": {
     "c8": "^7.8.0",
-    "gen-esm-wrapper": "^1.1.2",
     "husky": "^7.0.1",
-    "npm-run-all": "^4.1.5",
-    "shx": "^0.3.3",
-    "terser": "^5.7.2",
+    "terser": "^5.8.0",
     "uvu": "^0.5.1"
   },
   "engines": {
