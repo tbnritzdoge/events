@@ -13,7 +13,7 @@ test('static', () => {
 
     assert.instance(emitter, Emitter);
     assert.equal(emitter.eventNames().length, 0);
-    assert.throws(emitter['#events']);
+    assert.ok(emitter[Emitter.events])
     assert.equal(emitter.getMaxListeners(), Infinity);
     assert.ok(emitter.setMaxListeners(2000));
 });

@@ -1,3 +1,5 @@
+# @tbnritzdoge/events
+
 # usage
 
 ### nodejs
@@ -5,9 +7,7 @@
 import EventEmitter from '@tbnritzdoge/events';
 const emitter = new EventEmitter();
 emitter.on('cheese', (gluten) => {
-    if (Array.isArray(gluten) === true) {
-        gluten[gluten.length] = gluten[0];
-    }
+    if (Array.isArray(gluten) === true) gluten[gluten.length] = gluten[0];
 });
 emitter.emit('cheese', ['a', 'b', 'c']);
 ```
@@ -15,12 +15,10 @@ emitter.emit('cheese', ['a', 'b', 'c']);
 ### deno
 
 ```ts
-import EventEmitter from 'https://unpkg.com/@tbnritzdoge/events@1.0.1/dist/index.js';
+import EventEmitter from 'https://unpkg.com/@tbnritzdoge/events@1.0.5/dist/index.js';
 const emitter = new EventEmitter();
 emitter.on('cheese', (gluten) => {
-    if (Array.isArray(gluten) === true) {
-        gluten[gluten.length] = gluten[0];
-    }
+    if (Array.isArray(gluten) === true) gluten[gluten.length] = gluten[0];
 });
 emitter.emit('cheese', ['a', 'b', 'c']);
 ```

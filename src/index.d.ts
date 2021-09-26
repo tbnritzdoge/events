@@ -1,5 +1,6 @@
+declare const events: unique symbol;
 declare class Emitter<T extends Record<PropertyKey, any[]> = Record<PropertyKey, any[]>> {
-  #events: T;
+  [events]: T;
 
   on<K extends keyof T>(event: K, listener: EventFunction<T[K]>): this;
   once<K extends keyof T>(event: K, listener: EventFunction<T[K]>): this;
@@ -19,6 +20,8 @@ declare class Emitter<T extends Record<PropertyKey, any[]> = Record<PropertyKey,
 
 }
 
-declare type EventFunction<T extends any[] = any[]> = (...args: T) => unknown;
-
+declare type EventFunction<T extends any[] = any[]> = (...args: T) => any;
+// @ts-ignore this is needed for exports to work properly
 export = Emitter;
+// @ts-ignore this is needed for exports to work properly
+export { events };
