@@ -30,7 +30,7 @@ class Emitter {
     eventNames() { return Object.keys(this[events]); };
     removeListener(e, f) { return this.off(e, f); };
     addListener(n, t) { return this.on(n, t); };
-    setMaxListeners(..._) { return this; };
+    setMaxListeners(_) { return this; };
     getMaxListeners() { return Infinity; };
 };
 
