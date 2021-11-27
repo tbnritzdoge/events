@@ -2,4 +2,4 @@
 . "$(dirname "$0")/_/husky.sh"
 
 [ -n "$CI" ] && exit 0
-npm run buikd && npm test -o
+npm run build && npm test -o
