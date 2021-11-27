@@ -1,13 +1,7 @@
 const events = Symbol('events');
-
 function null_obj_proto() { var a = {}; Object.setPrototypeOf(a, null); return a; };
 class Emitter {
     [events] = null_obj_proto();
-
-    on(event, fn) {
-        const e = this[events][event];
-        return (e ? e[e.length] = fn : this[events][event] = [fn]), this;
-    };
 
     emit(event, ...args) {
         const e = this[events][event];
@@ -15,15 +9,6 @@ class Emitter {
         var i = e.length;
         while (i--) e[i](...args);
         return true;
-    };
-
-    once(event, fn) {
-        const f = (...args) => {
-            this.off(event, fn);
-            fn(...args);
-        };
-
-        return this.on(event, f);
     };
 
     off(event, fn) {
@@ -34,18 +19,10 @@ class Emitter {
         return this;
     };
 
-    listenerCount(event) {
-        const fns = this[events][event];
-        if (fns == undefined) return 0;
-        return fns.length;
-    };
-
-    removeAllListeners(event) {
-        if (event == undefined) this[events] = null_obj_proto();
-        else this[events][event] = void 0;
-        return this;
-    };
-
+    on(event, fn) { const e = this[events][event]; return (e ? e[e.length] = fn : this[events][event] = [fn]), this; };
+    once(event, fn) {  return this.on(event, (...args) => (this.off(event, fn), fn(...args))); };
+    listenerCount(event) { const f = this[events][event]; return f == undefined ? 0 : (f.length | 0); };
+    removeAllListeners(event) { return (event == undefined ? this[events] = null_obj_proto() : this[events][event] = void 0), this; };
     prependListener(event, fn) { return this.on(event, fn); };
     prependOnceListener(event, fn) { return this.once(event, fn); };
     listeners(event) { return this.rawListeners(event); };
